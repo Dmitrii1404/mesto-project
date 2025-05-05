@@ -26,6 +26,7 @@ const imageCloseCard = imagePopup.querySelector(".popup__close");
 const cardTemplate = document.querySelector("#card-template").content;
 const card = document.querySelector(".places__list");
 
+const form = document.querySelectorAll('.popup__form');
 
 export {
     profilePopup,
@@ -48,4 +49,5 @@ export {
     imageCloseCard,
     cardTemplate,
     card,
+    form,
 };
