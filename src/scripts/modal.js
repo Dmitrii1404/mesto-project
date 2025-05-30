@@ -18,9 +18,11 @@ function openModal(popup) {
 }
 
 function closeModal(popup) {
-    document.removeEventListener('click', closeByOverlay);
-    document.removeEventListener('keyup', closeByEsc);
-    popup.classList.remove('popup_is-opened');
+    if (popup.classList.contains('popup_is-opened')) {
+        document.removeEventListener('click', closeByOverlay);
+        document.removeEventListener('keyup', closeByEsc);
+        popup.classList.remove('popup_is-opened');
+    }
 }
 
 export {
