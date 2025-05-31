@@ -6,6 +6,7 @@ const profileCloseEditButton = profilePopup.querySelector(".popup__close");
 
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
+const profileImage = document.querySelector(".profile__image");
 
 const profileFormElement = profilePopup.querySelector(".popup__form");
 const editTitle = profilePopup.querySelector(".popup__input_type_name");
@@ -33,6 +34,7 @@ export {
     profileCloseEditButton,
     profileTitle,
     profileDescription,
+    profileImage,
     profileFormElement,
     editTitle,
     editDescription,

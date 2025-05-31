@@ -17,10 +17,12 @@ import {
     profileOpenEditButton,
     profilePopup,
     profileTitle,
+    profileImage,
 } from "./scripts/variables.js";
 import {openModal, closeModal} from "./scripts/modal.js";
 import {enableValidation} from "./scripts/validate";
 import { createCard } from "./scripts/cards.js";
+import { getProfile, getCards } from "./scripts/api";
 
 profilePopup.classList.add('popup_is-animated');
 cardPopup.classList.add('popup_is-animated');
@@ -53,6 +55,14 @@ function handleCardFormSubmit(evt) {
     card.prepend(createCard(name, url));
     closeModal(cardPopup);
 }
+
+Promise.all([getProfile(), getCards()])
+    .then(response => {
+        profileTitle.textContent = response[0].name;
+        profileDescription.textContent = response[0].about;
+        profileImage.src = response[0].avatar;
+        profileImage.alt = `User's avatar: ${response[0].name}`
+    })
 
 profileOpenEditButton.addEventListener('click', () => editFormProfile(profilePopup));
 profileCloseEditButton.addEventListener('click', () => closeModal(profilePopup));
