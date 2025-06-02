@@ -1,3 +1,4 @@
+// Показать ошибку
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -6,6 +7,7 @@ const showInputError = (formElement, inputElement, errorMessage, settings) => {
     errorElement.classList.add(settings.errorClass);
 };
 
+// Убрать ошибку
 const hideInputError = (formElement, inputElement, settings) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -14,6 +16,7 @@ const hideInputError = (formElement, inputElement, settings) => {
     errorElement.classList.remove(settings.errorClass);
 };
 
+// Изменение состояния ошибок
 const isValid = (formElement, inputElement, settings) => {
     if (!inputElement.validity.valid) {
         showInputError(formElement, inputElement, inputElement.validationMessage, settings);
@@ -22,6 +25,7 @@ const isValid = (formElement, inputElement, settings) => {
     }
 };
 
+// Установка слушателей на поля формы
 const setEventListeners = (formElement, settings) => {
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
     const buttonElement = formElement.querySelector(settings.submitButtonSelector);
@@ -35,12 +39,14 @@ const setEventListeners = (formElement, settings) => {
     })
 };
 
+// Проверка на валидность полей
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
     })
 };
 
+// Изменение состояния кнопки submit формы
 const toggleButtonState = (inputList, buttonElement, settings) => {
     if(hasInvalidInput(inputList)) {
         buttonElement.classList.add(settings.inactiveButtonClass);
@@ -51,6 +57,7 @@ const toggleButtonState = (inputList, buttonElement, settings) => {
     }
 };
 
+// Установка слушателей на формы
 export const enableValidation = (settings) => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
